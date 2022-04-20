@@ -13,8 +13,9 @@ def checkNode(node, size):                          #takes in (i,j), size
 
     size = checkNode(move(node, 'right'), size)
     size = checkNode(move(node, 'down'), size)
-    # checkNode(move(node, 'left'), size)
-    # checkNode(move(node, 'up'), size)
+    size = checkNode(move(node, 'left'), size)
+    size = checkNode(move(node, 'up'), size)
+
     return size
 
 def move(node, direction):                              #takes in (i,j), "RDLU"e
@@ -50,5 +51,16 @@ for line in input:
     j=0
 
 seen = []
+listOfbasins = []
 
-print(checkNode((0,0), 0))
+for i in range(rows):
+    for j in range(cols):
+        size = checkNode((i,j),0)
+        if size:
+            listOfbasins.append(size)
+
+listOfbasins.sort()
+
+ans = listOfbasins.pop() * listOfbasins.pop() * listOfbasins.pop()
+
+print(ans)
