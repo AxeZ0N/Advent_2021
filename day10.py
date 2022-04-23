@@ -10,7 +10,7 @@ syms = str('(){}[]<>')
 
 fixedStrings = []
 
-myCount = 0.0
+myCount = 0
 
 for line in input:
     i = -1
@@ -18,7 +18,7 @@ for line in input:
     for c in line:
         i += 1
         if i == len(line) - 1:
-            print('Incomplete')
+            # print('Incomplete')
             fixedString = ""
             if c not in closers:
                 stack.append(c)
@@ -51,11 +51,11 @@ for line in input:
     # print('Correct')
 
 totalCounts = []
-day1 = sum(totalCounts)
-print(day1)
+
+print(myCount)
 
 for item in fixedStrings:
-    myCount = 0.0
+    myCount = 0
     for c in item:
         myCount = myCount * 5
         match c:
@@ -71,5 +71,5 @@ totalCounts.sort()
 half = len(totalCounts)
 half = half -  1
 half = int(half / 2)
-print(half)
+
 print(totalCounts[half])
